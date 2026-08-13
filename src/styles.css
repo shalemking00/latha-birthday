@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Sacramento&display=swap');
+
+:root {
+  font-family: "DM Sans", sans-serif;
+  color: #3f2433;
+  background: #fff8fb;
+  font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; overflow-x: hidden; }
+
+.app {
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(255,180,205,.42), transparent 27%),
+    radial-gradient(circle at 90% 20%, rgba(255,218,161,.4), transparent 25%),
+    linear-gradient(180deg, #fff5f8 0%, #fffafe 52%, #fff3f7 100%);
+}
+
+.hero {
+  min-height: 94vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 90px 20px 70px;
+  position: relative;
+}
+
+.eyebrow {
+  display: flex; align-items: center; gap: 8px;
+  color: #c44d76; font-size: 12px; letter-spacing: 2px;
+  text-transform: uppercase; font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.cake-orb {
+  width: 108px; height: 108px; border-radius: 50%;
+  display: grid; place-items: center;
+  color: #d84e7a;
+  background: rgba(255,255,255,.7);
+  border: 1px solid rgba(216,78,122,.15);
+  box-shadow: 0 20px 60px rgba(204,75,116,.15);
+  animation: float 4s ease-in-out infinite;
+}
+
+.small-title {
+  margin: 26px 0 8px;
+  font-size: 11px; letter-spacing: 4px; font-weight: 700; color: #a76c80;
+}
+
+h1 {
+  margin: 0; font: 600 clamp(48px, 9vw, 92px)/.98 "Playfair Display", serif;
+  color: #432534; letter-spacing: -3px;
+}
+h1 span, h2 span { color: #d94d79; }
+
+.subtitle {
+  max-width: 660px; color: #755565; font-size: 17px; line-height: 1.8;
+  margin: 25px auto 30px;
+}
+
+.surprise-btn, .music-button {
+  border: 0; cursor: pointer; font: 700 14px "DM Sans";
+  transition: .25s ease;
+}
+.surprise-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 15px 23px; border-radius: 999px; color: white;
+  background: linear-gradient(135deg, #d94d79, #ee789d);
+  box-shadow: 0 14px 35px rgba(217,77,121,.27);
+}
+.surprise-btn:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(217,77,121,.34); }
+
+.music-button {
+  position: fixed; right: 18px; top: 18px; z-index: 20;
+  display: flex; align-items: center; gap: 7px;
+  padding: 11px 15px; border-radius: 999px;
+  color: #9f3f64; background: rgba(255,255,255,.84);
+  box-shadow: 0 8px 30px rgba(100,40,60,.12);
+  backdrop-filter: blur(12px);
+}
+.music-button:hover { transform: translateY(-2px); }
+
+.letter-section {
+  max-width: 850px; margin: 0 auto; padding: 25px 20px 100px;
+  opacity: 0; transform: translateY(30px); transition: 1s ease;
+}
+.letter-section.visible { opacity: 1; transform: none; }
+
+.card {
+  position: relative; overflow: hidden; text-align: center;
+  background: rgba(255,255,255,.78); border: 1px solid rgba(200,88,123,.13);
+  border-radius: 32px; padding: 65px clamp(25px, 7vw, 75px);
+  box-shadow: 0 30px 80px rgba(110,52,74,.10);
+}
+.card::before, .card::after {
+  content: ""; position: absolute; border-radius: 50%; filter: blur(1px);
+}
+.card::before { width: 190px; height: 190px; background: #ffe2eb; left: -100px; top: -100px; }
+.card::after { width: 160px; height: 160px; background: #fff0d5; right: -80px; bottom: -80px; }
+.card-top { color: #d94d79; position: relative; z-index: 1; }
+.script { font: 400 36px Sacramento, cursive; color: #c45a7d; margin: 12px 0; }
+.card h2 {
+  position: relative; z-index: 1;
+  font: 600 clamp(28px, 5vw, 44px)/1.25 "Playfair Display", serif;
+  margin: 10px auto 25px; max-width: 680px;
+}
+.letter {
+  position: relative; z-index: 1; max-width: 650px; margin: 16px auto;
+  line-height: 1.85; color: #765967; font-size: 16px;
+}
+.highlight { color: #b5426c; font-weight: 600; }
+.signature { position: relative; z-index: 1; margin-top: 32px; color: #9b6b7d; font-size: 13px; }
+.signature span { color: #d94d79; font-size: 20px; }
+
+
+.memories { max-width: 1050px; margin: 0 auto; padding: 10px 20px 95px; }
+.memory-intro { text-align: center; color: #80616e; margin: 0 auto 30px; line-height: 1.7; }
+.photo-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+.photo-card {
+  position: relative; overflow: hidden; border-radius: 25px; min-height: 280px;
+  box-shadow: 0 18px 45px rgba(95,42,62,.12); background: #f7e9ee;
+  transform: rotate(var(--rotation, 0deg)); transition: .35s ease;
+}
+.photo-card:hover { transform: translateY(-7px) rotate(0deg) scale(1.015); }
+.photo-card img { width: 100%; height: 100%; min-height: 280px; object-fit: cover; display: block; }
+.photo-1 { grid-column: span 7; --rotation: -1deg; }
+.photo-2 { grid-column: span 5; --rotation: 1deg; }
+.photo-3 { grid-column: span 4; --rotation: 1deg; }
+.photo-4 { grid-column: span 4; --rotation: -1deg; }
+.photo-5 { grid-column: span 4; --rotation: 1deg; }
+.photo-6 { grid-column: span 12; max-height: 330px; --rotation: -.4deg; }
+.photo-6 img { max-height: 330px; }
+.photo-caption {
+  position: absolute; left: 14px; right: 14px; bottom: 14px;
+  padding: 11px 14px; border-radius: 15px; color: white; text-align: center;
+  font-size: 13px; font-weight: 600; background: rgba(65,29,44,.55);
+  backdrop-filter: blur(8px);
+}
+.photo-note { text-align: center; color: #a77b8c; font-size: 12px; margin-top: 20px; }
+
+.wishes { max-width: 1050px; margin: 0 auto; padding: 20px 20px 100px; }
+.section-heading {
+  display: flex; align-items: center; justify-content: center; gap: 13px;
+  color: #d94d79;
+}
+.section-heading h2 { color: #492936; font: 600 clamp(27px, 4vw, 40px) "Playfair Display"; text-align: center; }
+
+.wish-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 30px; }
+.wish {
+  min-height: 190px; padding: 26px; border-radius: 25px;
+  background: rgba(255,255,255,.65); border: 1px solid rgba(198,92,125,.12);
+  box-shadow: 0 15px 45px rgba(95,42,62,.07);
+  transition: .3s ease;
+}
+.wish:hover { transform: translateY(-6px); box-shadow: 0 22px 50px rgba(95,42,62,.11); }
+.wish-number { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: #cf7694; }
+.wish p { line-height: 1.75; color: #6e5260; margin-bottom: 0; }
+
+.final {
+  max-width: 780px; margin: 0 auto; padding: 40px 25px 110px;
+  text-align: center;
+}
+.final-glow {
+  width: 82px; height: 82px; display: grid; place-items: center; margin: auto;
+  border-radius: 50%; color: #d94d79; background: #ffe2ec;
+  box-shadow: 0 15px 40px rgba(217,77,121,.15);
+}
+.final h2 { font: 600 clamp(32px, 6vw, 55px)/1.15 "Playfair Display"; margin: 15px 0; }
+.final > p:not(.script) { color: #765967; line-height: 1.8; }
+.confetti-text { margin-top: 25px; font-size: 23px; letter-spacing: 7px; }
+
+footer { text-align: center; padding: 0 20px 35px; color: #ad8493; font-size: 12px; }
+
+.floating-hearts span {
+  position: absolute; left: calc((var(--i) * 7.3%) + 2%);
+  bottom: -40px; color: rgba(217,77,121,.22); font-size: 13px;
+  animation: rise calc(7s + var(--i) * .35s) linear infinite;
+  animation-delay: calc(var(--i) * -.8s);
+}
+@keyframes rise {
+  0% { transform: translateY(0) rotate(0); opacity: 0; }
+  15% { opacity: 1; }
+  100% { transform: translateY(-110vh) rotate(45deg); opacity: 0; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+@media (max-width: 720px) {
+  .hero { min-height: 88vh; padding-top: 90px; }
+  .music-button span { display: none; }
+  .music-button { padding: 12px; }
+  h1 { letter-spacing: -2px; }
+  .subtitle { font-size: 15px; line-height: 1.7; }
+  .photo-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .photo-card, .photo-1, .photo-2, .photo-3, .photo-4, .photo-5, .photo-6 { grid-column: span 1; min-height: 210px; transform: none; }
+  .photo-card img, .photo-6 img { min-height: 210px; max-height: none; }
+  .photo-1 { grid-column: span 2; }
+  .photo-6 { grid-column: span 2; }
+  .wish-grid { grid-template-columns: 1fr; }
+  .wish { min-height: auto; }
+  .card { border-radius: 25px; padding: 48px 23px; }
+  .section-heading { align-items: center; }
+  .section-heading h2 { font-size: 30px; }
+}
