@@ -38,7 +38,7 @@ function App() {
   return (
     <main className="app">
       <audio ref={audioRef} loop preload="auto">
-        <source src="/birthday.mp3" type="audio/mpeg" />
+        <source src={`${import.meta.env.BASE_URL}birthday.mp3`} type="audio/mpeg" />
       </audio>
 
       <div className="floating-hearts" aria-hidden="true">
